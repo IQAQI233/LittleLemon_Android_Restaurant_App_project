@@ -7,6 +7,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
+import androidx.navigation.PopUpToBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -20,16 +21,15 @@ class MainActivity : ComponentActivity() {
             LittleLemonTheme {
                 val navController = rememberNavController()
 
-                NavHost(navController = navController, startDestination = Home.route) {
+                NavHost(navController = navController, startDestination = LoginPageRoute.route) {
                     composable(Home.route) {
                         HomeScreen(navController)
                     }
-                    composable(
-                        DishDetails.route + "/{${DishDetails.argDishId}}",
-                        arguments = listOf(navArgument(DishDetails.argDishId) { type = NavType.IntType })
-                    ) {
-                        val id = requireNotNull(it.arguments?.getInt(DishDetails.argDishId)) { "Dish id is null" }
-                        DishDetails(id)
+                    composable(LoginPageRoute.route) {
+                        LogIn(navController = navController)
+                    }
+                    composable(RegisterPageRoute.route) {
+                        Register(navController = navController)
                     }
                 }
             }

@@ -17,13 +17,13 @@ fun BottomBar(navController: NavController) {
     BottomAppBar {
         BottomNavigationItem(
             selected = navController.currentBackStackEntryAsState().value?.destination?.route == HomePageRoute.route,
-            onClick = { /*TODO*/ },
+            onClick = { navController.navigate(HomePageRoute.route) { popUpTo(HomePageRoute.route); launchSingleTop = true } },
             icon = { Icon(imageVector = Icons.Default.Home, contentDescription = "Home Icon") },
             label = { Text(text = "Home", style = MaterialTheme.typography.h2)}
         )
         BottomNavigationItem(
             selected = navController.currentBackStackEntryAsState().value?.destination?.route == MenuPageRoute.route,
-            onClick = { /*TODO*/ },
+            onClick = { navController.navigate(MenuPageRoute.route) { popUpTo(MenuPageRoute.route); launchSingleTop = true } },
             icon = { Icon(imageVector = Icons.Default.Menu, contentDescription = "Menu") },
             label = { Text(text = "Menu", style = MaterialTheme.typography.h2)}
         )

@@ -21,6 +21,18 @@ object MenuPageRoute : Destinations {
     override val route = "MenuPage"
 }
 
-object OrderPage : Destinations {
+object OrderPageRoute : Destinations {
     override val route = "OrderPage"
+}
+
+object LoginPageRoute : Destinations {
+    override val route = "LoginPage"
+}
+
+object RegisterPageRoute : Destinations {
+    override val route = "RegisterPage"
+}
+
+object BasketPageRoute : Destinations {
+    override val route = "BasketPage"
 }

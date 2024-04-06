@@ -63,14 +63,16 @@ fun WeeklySpecialCard() {
     }
 }
 
+/*
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MenuDish(navController: NavHostController? = null, dish: Dish) {
-    Card(onClick = {
-        Log.d("AAA", "Click ${dish.id}")
-        navController?.navigate(DishDetails.route + "/${dish.id}")
-    }) {
-        //TODO: Insert code here
+    Card(
+        onClick = {
+            Log.d("AAA", "Click ${dish.id}")
+            navController?.navigate(DishDetails.route + "/${dish.id}")
+        }
+    ) {
         Row (modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)) {
@@ -98,3 +100,4 @@ fun MenuDish(navController: NavHostController? = null, dish: Dish) {
         color = LittleLemonColor.yellow
     )
 }
+*/

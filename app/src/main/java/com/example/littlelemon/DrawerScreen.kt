@@ -1,4 +1,4 @@
-package com.example.littlelemon.ui.theme
+package com.example.littlelemon
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -16,7 +16,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ScaffoldState
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Logout
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,8 +26,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.littlelemon.PersonalInfo
-import com.example.littlelemon.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -53,11 +53,11 @@ fun DrawerScreen(
         Row (
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable { scope.launch { scaffoldState.drawerState.close() } }
+                .clickable { navController.navigate(LoginPageRoute.route) }
                 .padding(15.dp)
         ) {
-            Icon(imageVector = Icons.Default.Home, contentDescription = "Exit")
-            Text(text = "Back to Home", style = MaterialTheme.typography.body2)
+            Icon(imageVector = Icons.AutoMirrored.Filled.Logout, contentDescription = "Log Out")
+            Text(text = "Log Out", style = MaterialTheme.typography.body2)
         }
         Row (
             modifier = Modifier
@@ -78,8 +78,7 @@ fun Header() {
         contentDescription = "Avatar",
         modifier = Modifier
             .clip(CircleShape)
-            .fillMaxWidth()
+            .fillMaxWidth(0.5f)
             .padding(10.dp)
     )
-    }
 }

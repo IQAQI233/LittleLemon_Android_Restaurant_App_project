@@ -16,11 +16,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.littlelemon.ui.theme.LittleLemonColor
-import com.example.littlelemon.ui.theme.LittleLemonTheme
 
 @Composable
-fun UpperPanel() {
+fun UpperPanel(navController2: NavHostController) {
     Column(
         modifier = Modifier
             .background(LittleLemonColor.green)
@@ -57,7 +57,7 @@ fun UpperPanel() {
             )
         }
         Button(
-            onClick = { }
+            onClick = { navController2.navigate(MenuPageRoute.route) }
         ) {
             Text(
                 text = stringResource(id = R.string.order_button_text)
@@ -66,8 +66,3 @@ fun UpperPanel() {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun UpperPanelPreview() {
-    UpperPanel()
-}
