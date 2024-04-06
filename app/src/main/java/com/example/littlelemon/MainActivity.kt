@@ -3,6 +3,9 @@ package com.example.littlelemon
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.material.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -16,6 +19,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             LittleLemonTheme {
                 val navController = rememberNavController()
+
                 NavHost(navController = navController, startDestination = Home.route) {
                     composable(Home.route) {
                         HomeScreen(navController)
@@ -32,3 +36,5 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+
