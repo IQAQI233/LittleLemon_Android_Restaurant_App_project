@@ -1,4 +1,4 @@
-package com.example.littlelemon
+package com.example.littlelemon.loginScreen
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
@@ -17,11 +16,9 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.runtime.Composable
@@ -34,19 +31,21 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.littlelemon.dataResources.Home
+import com.example.littlelemon.dataResources.PersonalInfo
+import com.example.littlelemon.R
+import com.example.littlelemon.dataResources.RegisterPageRoute
 
 @Composable
 fun LogIn(navController: NavController) {
-    var username = rememberSaveable() { mutableStateOf("") }
-    var password = rememberSaveable() { mutableStateOf("") }
-    var passwordVisibility = rememberSaveable() { mutableStateOf(false) }
+    val username = rememberSaveable() { mutableStateOf("") }
+    val password = rememberSaveable() { mutableStateOf("") }
+    val passwordVisibility = rememberSaveable() { mutableStateOf(false) }
     val context = LocalContext.current
     val scrollState = rememberScrollState()
     Column (

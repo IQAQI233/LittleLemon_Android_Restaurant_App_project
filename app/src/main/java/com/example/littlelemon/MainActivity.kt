@@ -3,15 +3,15 @@ package com.example.littlelemon
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.Scaffold
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavType
-import androidx.navigation.PopUpToBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
+import com.example.littlelemon.dataResources.Home
+import com.example.littlelemon.dataResources.LoginPageRoute
+import com.example.littlelemon.dataResources.RegisterPageRoute
+import com.example.littlelemon.loginScreen.LogIn
+import com.example.littlelemon.loginScreen.Register
+import com.example.littlelemon.mainScreen.HomeScreen
 import com.example.littlelemon.ui.theme.LittleLemonTheme
 
 class MainActivity : ComponentActivity() {

@@ -1,7 +1,6 @@
-package com.example.littlelemon
+package com.example.littlelemon.dataResources
 
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.saveable.rememberSaveable
 
 object OrderList {
     val orderList = mutableStateListOf<Int>().apply { repeat(DishRepository.dishes.size) { add(0) } }

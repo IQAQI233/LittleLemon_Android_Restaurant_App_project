@@ -1,4 +1,4 @@
-package com.example.littlelemon
+package com.example.littlelemon.mainScreen
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
@@ -19,7 +19,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,6 +26,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.littlelemon.R
+import com.example.littlelemon.dataResources.DishRepository
+import com.example.littlelemon.dataResources.OrderList
 
 @Composable
 fun Basket(navController2: NavHostController) {
@@ -48,7 +50,7 @@ fun Basket(navController2: NavHostController) {
             )
         }
         LazyColumn (modifier = Modifier.weight(1f)) {
-            itemsIndexed(DishRepository.dishes) {index, dish ->
+            itemsIndexed(DishRepository.dishes) { index, dish ->
                 if (OrderList.orderList[index] != 0) {
                     MenuDish(dish = dish)
                 }
@@ -71,7 +73,7 @@ fun Basket(navController2: NavHostController) {
                 .fillMaxWidth()
         ) {
             Text(
-                text ="Total price: $${price.value}",
+                text ="Total price: $${"%.2f".format(price.value)}",
                 style = MaterialTheme.typography.h1,
                 modifier = Modifier
                     .padding(8.dp)

@@ -1,4 +1,4 @@
-package com.example.littlelemon
+package com.example.littlelemon.loginScreen
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -36,12 +36,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.littlelemon.dataResources.LoginPageRoute
+import com.example.littlelemon.dataResources.PersonalInfo
+import com.example.littlelemon.R
 
 @Composable
 fun Register(navController: NavController) {
-    var username = rememberSaveable() { mutableStateOf("") }
-    var password = rememberSaveable() { mutableStateOf("") }
-    var passwordVisibility = rememberSaveable() { mutableStateOf(false) }
+    val username = rememberSaveable() { mutableStateOf("") }
+    val password = rememberSaveable() { mutableStateOf("") }
+    val passwordVisibility = rememberSaveable() { mutableStateOf(false) }
     val context = LocalContext.current
     val scrollState = rememberScrollState()
     Column (
@@ -50,8 +53,16 @@ fun Register(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Box(modifier = Modifier.wrapContentSize()) {
-            Image(painter = painterResource(id = R.drawable.littlelemontxt), contentDescription = "Background")
-            Image(painter = painterResource(id = R.drawable.littlelemonimg), contentDescription = "Lemon")
+            Image(
+                painter = painterResource(id = R.drawable.littlelemontxt),
+                contentDescription = "Background",
+                modifier = Modifier.align(Alignment.Center)
+            )
+            Image(
+                painter = painterResource(id = R.drawable.littlelemonimg),
+                contentDescription = "Lemon",
+                modifier = Modifier.align(Alignment.Center)
+            )
         }
         TextField(
             value = username.value,
@@ -76,7 +87,7 @@ fun Register(navController: NavController) {
                 )
             },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
-            placeholder = { Text(text = "Password must be at least 6 digits!!!") }
+            placeholder = { Text(text = "At least 6 digits!!!") }
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(

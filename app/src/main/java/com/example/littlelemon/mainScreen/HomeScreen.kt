@@ -1,4 +1,4 @@
-package com.example.littlelemon
+package com.example.littlelemon.mainScreen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,6 +14,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.littlelemon.dataResources.BasketPageRoute
+import com.example.littlelemon.dataResources.DishRepository
+import com.example.littlelemon.dataResources.HomePageRoute
+import com.example.littlelemon.dataResources.MenuPageRoute
+import com.example.littlelemon.mainScreen.scaffoldWidgets.BottomBar
+import com.example.littlelemon.mainScreen.scaffoldWidgets.DrawerScreen
+import com.example.littlelemon.mainScreen.scaffoldWidgets.TopAppBar
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
@@ -46,10 +53,10 @@ fun HomeScreen(navController: NavHostController) {
 
 
             composable(
-                DishDetails.route + "/{${DishDetails.argDishId}}",
-                arguments = listOf(navArgument(DishDetails.argDishId) { type = NavType.IntType })
+                com.example.littlelemon.dataResources.DishDetails.route + "/{${com.example.littlelemon.dataResources.DishDetails.argDishId}}",
+                arguments = listOf(navArgument(com.example.littlelemon.dataResources.DishDetails.argDishId) { type = NavType.IntType })
             ) {
-                val id = requireNotNull(it.arguments?.getInt(DishDetails.argDishId)) { "Dish id is null" }
+                val id = requireNotNull(it.arguments?.getInt(com.example.littlelemon.dataResources.DishDetails.argDishId)) { "Dish id is null" }
                 DishDetails(id, navController2)
             }
 

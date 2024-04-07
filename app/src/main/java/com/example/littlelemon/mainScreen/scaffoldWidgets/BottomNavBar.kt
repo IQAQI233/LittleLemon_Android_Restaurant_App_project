@@ -1,4 +1,4 @@
-package com.example.littlelemon
+package com.example.littlelemon.mainScreen.scaffoldWidgets
 
 import androidx.compose.material.BottomAppBar
 import androidx.compose.material.BottomNavigationItem
@@ -11,6 +11,8 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.littlelemon.dataResources.HomePageRoute
+import com.example.littlelemon.dataResources.MenuPageRoute
 
 @Composable
 fun BottomBar(navController: NavController) {

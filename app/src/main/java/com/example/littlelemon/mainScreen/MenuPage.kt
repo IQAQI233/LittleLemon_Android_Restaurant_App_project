@@ -1,19 +1,16 @@
-package com.example.littlelemon
+package com.example.littlelemon.mainScreen
 
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
 import androidx.compose.material.ExperimentalMaterialApi
@@ -21,20 +18,21 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.littlelemon.dataResources.Dish
+import com.example.littlelemon.dataResources.DishRepository
+import com.example.littlelemon.dataResources.OrderList
 import com.example.littlelemon.ui.theme.LittleLemonColor
 
 @Composable
 fun MenuPage(navController2: NavHostController) {
     LazyColumn (modifier = Modifier.fillMaxSize()) {
-        itemsIndexed(DishRepository.dishes) {_, dish ->
+        itemsIndexed(DishRepository.dishes) { _, dish ->
             MenuDish(dish = dish, navController = navController2)
         }
     }
@@ -46,7 +44,7 @@ fun MenuDish(navController: NavHostController? = null, dish: Dish) {
     Card(
         onClick = {
             Log.d("AAA", "Click ${dish.id}")
-            navController?.navigate(DishDetails.route + "/${dish.id}")
+            navController?.navigate(com.example.littlelemon.dataResources.DishDetails.route + "/${dish.id}")
         }
     ) {
         Row (modifier = Modifier
@@ -63,34 +61,11 @@ fun MenuDish(navController: NavHostController? = null, dish: Dish) {
                 )
                 Row (
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceEvenly
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier.fillMaxWidth(0.75f)
                 ) {
                     Text(text = "$${dish.price}", style = MaterialTheme.typography.body2)
-                    TextButton(
-                        onClick = {
-                            if (OrderList.orderList[dish.id - 1] > 0) OrderList.orderList[dish.id - 1]--
-                        }
-                    ) {
-                        Text(
-                            text = "-",
-                            style = MaterialTheme.typography.body2
-                        )
-                    }
-                    Text(
-                        text = OrderList.orderList[dish.id - 1].toString(),
-                        style = MaterialTheme.typography.body2,
-                        modifier = Modifier.padding(horizontal = 16.dp)
-                    )
-                    TextButton(
-                        onClick = {
-                            OrderList.orderList[dish.id - 1]++
-                        }
-                    ) {
-                        Text(
-                            text = "+",
-                            style = MaterialTheme.typography.body2
-                        )
-                    }
+                    Counting(dish)
                 }
             }
             Image(
@@ -105,4 +80,38 @@ fun MenuDish(navController: NavHostController? = null, dish: Dish) {
         thickness = 1.dp,
         color = LittleLemonColor.yellow
     )
+}
+
+@Composable
+fun Counting(dish: Dish) {
+    Row (
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
+    ) {
+        TextButton(
+            onClick = {
+                if (OrderList.orderList[dish.id - 1] > 0) OrderList.orderList[dish.id - 1]--
+            }
+        ) {
+            Text(
+                text = "-",
+                style = MaterialTheme.typography.body2
+            )
+        }
+        Text(
+            text = OrderList.orderList[dish.id - 1].toString(),
+            style = MaterialTheme.typography.body2,
+            modifier = Modifier.padding(horizontal = 16.dp)
+        )
+        TextButton(
+            onClick = {
+                OrderList.orderList[dish.id - 1]++
+            }
+        ) {
+            Text(
+                text = "+",
+                style = MaterialTheme.typography.body2
+            )
+        }
+    }
 }

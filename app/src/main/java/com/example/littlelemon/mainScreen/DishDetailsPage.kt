@@ -1,4 +1,4 @@
-package com.example.littlelemon
+package com.example.littlelemon.mainScreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -13,9 +13,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.littlelemon.R
+import com.example.littlelemon.dataResources.DishRepository
+import com.example.littlelemon.dataResources.OrderList
 
 @Composable
 fun DishDetails(id: Int, navController: NavController) {

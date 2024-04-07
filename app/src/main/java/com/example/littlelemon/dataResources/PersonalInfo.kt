@@ -1,4 +1,4 @@
-package com.example.littlelemon
+package com.example.littlelemon.dataResources
 
 import androidx.compose.runtime.mutableStateOf
 
